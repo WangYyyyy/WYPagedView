@@ -9,17 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController, WYPagedViewDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let images = NSArray(objects: UIImage(named: "demo0.jpg")!, UIImage(named: "demo1.jpg")!, UIImage(named: "demo2.jpg")!)
         
+        //        let view = WYPagedView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 200), images: images as! [UIImage], timeInterval: 2)
         
-//        let view = WYPagedView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 200), images: NSArray(objects: UIImage(named: "640welcome0.jpg")!, UIImage(named: "640welcome1.jpg")!, UIImage(named: "640welcome2.jpg")!), timeInterval: 2)
-        
-        let view = WYPagedView(frame: CGRectMake(0, (self.view.frame.size.height - self.view.frame.size.width * 0.666)/2, self.view.frame.size.width, self.view.frame.size.width * 0.666), images: NSArray(objects: UIImage(named: "demo0.jpg")!, UIImage(named: "demo1.jpg")!, UIImage(named: "demo2.jpg")!), timeInterval: 2) { (item) -> Void in
+        let view = WYPagedView(frame: CGRectMake(0, (self.view.frame.size.height - self.view.frame.size.width * 0.666)/2, self.view.frame.size.width, self.view.frame.size.width * 0.666), images: images as! [UIImage], timeInterval: 2) { (item) -> Void in
             print(item)
         }
+        
+        
         
         view.delegate = self
         self.view.addSubview(view)
@@ -31,12 +33,12 @@ class ViewController: UIViewController, WYPagedViewDelegate {
     func didTapItem(item: Int) {
         print(item)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 

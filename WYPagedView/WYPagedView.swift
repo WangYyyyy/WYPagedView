@@ -13,7 +13,7 @@ typealias TapItemClosure = (item:Int) -> Void
 class WYPagedView: UIView, UIScrollViewDelegate {
     
     private var tapItemClosure:TapItemClosure?
-
+    
     private var scrollView:UIScrollView!
     
     private var initType:InitType = .normal
@@ -22,15 +22,26 @@ class WYPagedView: UIView, UIScrollViewDelegate {
     
     private var imageViewCount = 0
     
-    //    var dalegate:WYPagedView?
+    ///初始化方法
+    ///
+    /// - parameter frame    :frame
+    /// - parameter images  :UIImage数组
+    /// - parameter timeInterval  :循环时间
     
-    init(frame: CGRect, images:NSArray, timeInterval:Double) {
+    init(frame: CGRect, images:[UIImage], timeInterval:Double) {
         super.init(frame: frame)
         scrollView = UIScrollView(frame: CGRectMake(0,0,frame.size.width,frame.size.height))
         initializeImageViews(images, timeInterval: timeInterval)
     }
     
-    init(frame: CGRect, images:NSArray, timeInterval:Double, tapItemClosure:TapItemClosure) {
+    ///初始化方法closure
+    ///
+    /// - parameter frame    :frame
+    /// - parameter images  :UIImage数组
+    /// - parameter timeInterval  :循环时间
+    /// - parameter tapItemClosure  :closure实现点击事件
+    
+    init(frame: CGRect, images:[UIImage], timeInterval:Double, tapItemClosure:TapItemClosure) {
         super.init(frame: frame)
         self.tapItemClosure = tapItemClosure
         self.initType = .closure
@@ -67,7 +78,7 @@ class WYPagedView: UIView, UIScrollViewDelegate {
                 let imageView = UIImageView(image: images.lastObject as? UIImage)
                 imageView.frame = CGRectMake(0, 0, viewWidth, viewHeight)
                 self.scrollView.addSubview(imageView)
-
+                
                 let btn = UIButton(type: .Custom)
                 btn.frame = CGRectMake(0, 0, viewWidth, viewHeight)
                 btn.tag = i
@@ -105,7 +116,7 @@ class WYPagedView: UIView, UIScrollViewDelegate {
         self.scrollView.setContentOffset(CGPointMake(viewWidth, 0), animated: false)
         
         self.addSubview(scrollView)
-
+        
         
         //计时器
         let timer = NSTimer(timeInterval: timeInterval, target: self, selector: "loop", userInfo: nil, repeats: true)
@@ -139,7 +150,7 @@ class WYPagedView: UIView, UIScrollViewDelegate {
         
         if btn.tag == 0 {
             //第一按钮对应最后一个
-
+            
             if delegate != nil {
                 delegate?.didTapItem?(imageViewCount - 1)
             }
@@ -158,7 +169,7 @@ class WYPagedView: UIView, UIScrollViewDelegate {
             if tapItemClosure != nil {
                 tapItemClosure!(item: 0)
             }
-
+            
             
         }else {
             //正常对应 tag - 1 == i
@@ -173,17 +184,17 @@ class WYPagedView: UIView, UIScrollViewDelegate {
         
         
     }
-
+    
     
     
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-        // Drawing code
+    // Drawing code
     }
     */
-
+    
 }
 
 enum InitType {

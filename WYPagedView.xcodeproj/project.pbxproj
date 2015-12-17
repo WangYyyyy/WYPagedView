@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88143EF71C20F64F0029805C /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88143EF61C20F64F0029805C /* ImageCache.swift */; };
 		8814FB8B1C1F9F0D004325E9 /* WYPagedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814FB8A1C1F9F0D004325E9 /* WYPagedView.swift */; };
 		888536481C200F89009A0373 /* demo0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 888536451C200F89009A0373 /* demo0.jpg */; };
 		888536491C200F89009A0373 /* demo1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 888536461C200F89009A0373 /* demo1.jpg */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		88143EF61C20F64F0029805C /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = ../ImageCache.swift; sourceTree = "<group>"; };
 		8814FB8A1C1F9F0D004325E9 /* WYPagedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYPagedView.swift; sourceTree = "<group>"; };
 		888536451C200F89009A0373 /* demo0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo0.jpg; sourceTree = "<group>"; };
 		888536461C200F89009A0373 /* demo1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo1.jpg; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		8885364B1C200FC0009A0373 /* pagedView */ = {
 			isa = PBXGroup;
 			children = (
+				88143EF61C20F64F0029805C /* ImageCache.swift */,
 				8814FB8A1C1F9F0D004325E9 /* WYPagedView.swift */,
 			);
 			name = pagedView;
@@ -299,6 +302,7 @@
 			files = (
 				8814FB8B1C1F9F0D004325E9 /* WYPagedView.swift in Sources */,
 				88CE46781C1C079800FDD9F9 /* ViewController.swift in Sources */,
+				88143EF71C20F64F0029805C /* ImageCache.swift in Sources */,
 				88CE46761C1C079800FDD9F9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +446,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WYPagedView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangyu.WYPagedView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -453,6 +458,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WYPagedView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangyu.WYPagedView;
 				PRODUCT_NAME = "$(TARGET_NAME)";

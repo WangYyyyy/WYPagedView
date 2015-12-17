@@ -8,9 +8,9 @@
 
 # 使用方法
 #####直接设置frame和图片集合 add到指定view即可使用
-		let view = WYPagedView(frame: CGRectMake(0, 0, 0, 0), images: images, timeInterval: 2)
+	let view = WYPagedView(frame: CGRectMake(0, 0, 0, 0), images: images, timeInterval: 2)
 #####通过图片的URL集合 还可以设置加载中的默认图片 add到指定view即可使用
-		let view = WYPagedView(frame: CGRectMake(0, 0, 0, 0), imageURLStrings: imagesURLs, placeholderImage: UIImage(), timeInterval: 2)
+	let view = WYPagedView(frame: CGRectMake(0, 0, 0, 0), imageURLStrings: imagesURLs, placeholderImage: UIImage(), timeInterval: 2)
 
 ---
 # 点击事件
@@ -23,8 +23,7 @@
 1.初始化中选择带有closure tapItemClosure 的初始化方法  
 例如：  
         
-        
-        let view = WYPagedView(frame: CGRectMake(0, 0, 0, 0), images: images, timeInterval: 2) { (item) -> Void in
+    let view = WYPagedView(frame: CGRectMake(0, 0, 0, 0),images: images, timeInterval: 2) { (item) -> Void in
         	print(item)
         }
 

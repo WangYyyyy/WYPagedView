@@ -15,10 +15,10 @@
 ---
 # 点击事件
 #####通过delegate实现响应
-1.实现 WYPagedViewDelegate 协议
-2.设置代理 view.delegate = self
-3.实现 func didTapItem(item: Int)方法
-4.item 则是点击的参数数组的index值
+1.实现 WYPagedViewDelegate 协议  
+2.设置代理 view.delegate = self  
+3.实现 func didTapItem(item: Int)方法  
+4.item 则是点击的参数数组的index值  
 #####通过closure实现
 1.初始化中选择带有closure tapItemClosure 的初始化方法  
 例如：  

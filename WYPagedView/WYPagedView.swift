@@ -20,6 +20,12 @@ class WYPagedView: UIView, UIScrollViewDelegate {
     
     private var imageViewCount = 0
     
+    var titles:NSArray = ["title1","title2","title3","title4","title5"]
+    
+    var titleLabel:UILabel?
+    
+    var pageControl = UIPageControl()
+    
     ///初始化方法
     ///
     /// - parameter frame    :frame
@@ -228,12 +234,38 @@ class WYPagedView: UIView, UIScrollViewDelegate {
         let timer = NSTimer(timeInterval: timeInterval, target: self, selector: "loop", userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
         
+        addBottomView()
+        
+    }
+    
+    func addBottomView() {
+        
+        let view = UIView(frame: CGRectMake(0,self.frame.size.height - 20,self.frame.size.width, 20))
+        view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.4)
+        
+        self.addSubview(view)
+        
+        titleLabel = UILabel(frame: CGRectMake(14,0,150,20))
+        titleLabel?.font = UIFont.systemFontOfSize(14)
+        titleLabel?.textColor = UIColor.whiteColor()
+        titleLabel?.text = titles[0] as? String
+        view.addSubview(titleLabel!)
+        
+        
+        pageControl.frame = CGRectMake(view.frame.size.width - CGFloat(imageViewCount * 20), 0, CGFloat(imageViewCount * 20), 20)
+        pageControl.numberOfPages = imageViewCount
+        pageControl.currentPage = 0;
+        pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
+        pageControl.pageIndicatorTintColor = UIColor.whiteColor()
+        
+        view.addSubview(pageControl)
     }
     
     //MARK:计时器方法
     func loop() {
         let width = scrollView.frame.size.width
         let page = floor((scrollView.contentOffset.x - width/2)/width) + 1
+        self.pageControl.currentPage = NSInteger(page)
         scrollView.setContentOffset(CGPointMake(width * CGFloat(page + 1), 0), animated: true)
     }
     
@@ -243,10 +275,21 @@ class WYPagedView: UIView, UIScrollViewDelegate {
             let width = scrollView.frame.size.width
             let page = floor((scrollView.contentOffset.x - width/2)/width) + 1
             
-            if page >= 3 {
-                scrollView.setContentOffset(CGPointMake(0, 0), animated: false)
+            
+            if page == 0 {
+                scrollView.setContentOffset(CGPointMake(width * CGFloat(imageViewCount), 0), animated: false)
+                self.pageControl.currentPage = imageViewCount - 1
+                titleLabel?.text = titles[imageViewCount - 1] as? String
+            }else if page >= CGFloat(imageViewCount + 1){
+                scrollView.setContentOffset(CGPointMake(width, 0), animated: false)
+                self.pageControl.currentPage = NSInteger(0)
+                titleLabel?.text = titles[0] as? String
+            }else {
+                self.pageControl.currentPage = NSInteger(page - 1)
+                titleLabel?.text = titles[Int(page - 1)] as? String
             }
         }
+
     }
     
     

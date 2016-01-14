@@ -25,11 +25,20 @@ class ViewController: UIViewController, WYPagedViewDelegate {
         
 //        let view = WYPagedView(frame: CGRectMake(0, (self.view.frame.size.height - self.view.frame.size.width * 0.666)/2, self.view.frame.size.width, self.view.frame.size.width * 0.666),imagesURL imageURLStrings: , timeInterval: 2)
         
-        let view = WYPagedView(frame: CGRectMake(0, (self.view.frame.size.height - self.view.frame.size.width * 0.666)/2, self.view.frame.size.width, self.view.frame.size.width * 0.666), imageURLStrings: imagesURL, placeholderImage: UIImage(named: "demo0.jpg")!, timeInterval: 2)
+        let view = WYPagedView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width * 0.666), imageURLStrings: imagesURL, placeholderImage: UIImage(named: "demo0.jpg")!, timeInterval: 2)
         
         
         view.delegate = self
         self.view.addSubview(view)
+        
+        
+        
+        let imgs = ["http://img.popoho.com/UploadPic/2011-10/20111024132221149.jpg","http://img.popoho.com/UploadPic/2011-10/20111026162831118.jpg","http://img.popoho.com/UploadPic/2011-12/201112149545717.jpg","http://img.popoho.com/UploadPic/2011-10/20111024132220500.jpg","http://img.popoho.com/UploadPic/2011-11/20111123112429397.jpg"]
+        
+        let view2 = WYPagedView(frame: CGRectMake(0, view.frame.size.height + 20, self.view.frame.size.width, self.view.frame.size.width * 0.666), imageURLStrings: imgs, timeInterval: 3) { (item) -> Void in
+            
+        }
+        self.view.addSubview(view2)
         
         
         // Do any additional setup after loading the view, typically from a nib.

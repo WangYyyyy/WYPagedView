@@ -23,6 +23,7 @@ class ImageCache: NSObject {
         
         if fileData != nil {
             //本地有数据，则直接返回
+//            print("加载缓存")
             imageReturnClosure(image: UIImage(data: fileData!), error: nil)
         }else {
             //本地没有数据，请求网络数据
@@ -31,6 +32,8 @@ class ImageCache: NSObject {
             NSURLConnection.sendAsynchronousRequest(req, queue: NSOperationQueue()) { (response, data, er) -> Void in
                 if er == nil && data != nil{
                     //请求成功，返回数据写入本地
+//                    print("写入本地")
+                    data!.writeToFile(filePath, atomically: true)
                     imageReturnClosure(image: UIImage(data: data!), error: nil)
                     
                 }else {
